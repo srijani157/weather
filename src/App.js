@@ -6,7 +6,7 @@ const api = {
 
 
 function App() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('  ');
   const [weather, setWeather] = useState({});
 
   const search = evt => {
@@ -46,6 +46,7 @@ function App() {
             onKeyPress={search}
           />
         </div>
+        
         {typeof weather.main != "undefined" ? (
           <div>
             <div className="location-box">
@@ -72,14 +73,22 @@ function App() {
               </div>
             </div>
           </div>
+        ) : (query  !== '  ')?(
+                <div>
+                  <div className="location-box">
+                    <div className="location">
+                      <h1 style={{ color: "white" }}>not found</h1>
+                    </div>
+                  </div>
+                </div>
         ) : (
-          <div>
-            <div className="location-box">
-              <div className="location">
-                <h1 style={{ color: "white" }}>not found</h1>
+            <div>
+              <div className="location-box">
+                <div className="location">
+                  <h1 style={{ color: "white" }}>go ahead serach for a place</h1>
+                </div>
               </div>
             </div>
-          </div>
         )}
       </main>
     </div>
