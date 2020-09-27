@@ -6,7 +6,8 @@ const api = {
 
 
 function App() {
-  const [query, setQuery] = useState('  ');
+  const [start,setStart] = useState(1);
+  const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
   const search = evt => {
@@ -15,6 +16,7 @@ function App() {
         .then(res => res.json())
         .then(result => {
           setWeather(result);
+          setStart(0);
           setQuery('');
           console.log(result);
         });
@@ -59,8 +61,6 @@ function App() {
               <div className="temp">{Math.round(weather.main.temp)}°c</div>
               <div className="weather">
                 {weather.weather[0].main}
-                {/* <br />
-                {weather.weather[0].description} */}
               </div>
               <div className="weather1">
                 feels like:{Math.round(weather.main.feels_like)}°c
@@ -73,7 +73,7 @@ function App() {
               </div>
             </div>
           </div>
-        ) : (query  !== '  ')?(
+        ) : (start  !==  1)?(
                 <div>
                   <div className="location-box">
                     <div className="location">
