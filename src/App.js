@@ -19,7 +19,9 @@ function App() {
           setStart(0);
           setQuery('');
           console.log(result);
-        });
+        })
+        .catch(err => console.log(err));
+
     }
   }
 
